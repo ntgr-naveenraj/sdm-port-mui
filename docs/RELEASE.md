@@ -22,10 +22,13 @@ Output: `dist/` (suitable for static hosting if you deploy only the UI; the Flas
 
 Full prerequisites: [PACKAGING.md](PACKAGING.md) (Rust, Node, Python, PyInstaller; MSVC on Windows).
 
-From repo root on **each OS** you ship:
+From repo root on **each OS** you ship. Use a **Python venv** first (Ubuntu 24+ / PEP 668 — system `pip install` is blocked):
 
 ```bash
-pip install -r backend/requirements.txt -r backend/requirements-build.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -U pip setuptools wheel
+python -m pip install -r backend/requirements.txt -r backend/requirements-build.txt
 npm ci
 npm run sidecar:prepare
 npm run tauri build

@@ -1,0 +1,2 @@
+# Optional: build frozen API for Tauri sidecar
+pyinstaller>=6.0

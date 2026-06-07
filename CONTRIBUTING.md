@@ -16,28 +16,30 @@ Optional: **Visual Studio Build Tools (C++)** on Windows when running `cargo` / 
 
 From the **repository root** (`SDM_Modern/`):
 
-1. **Python virtual environment (recommended)**
+1. **Python virtual environment** (use on Ubuntu 24+ / PEP 668; recommended everywhere)
 
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
+   source .venv/bin/activate          # Windows: .venv\Scripts\activate
+   python -m pip install -U pip setuptools wheel
+   python -m pip install -r backend/requirements.txt
    ```
 
-   - Windows: `.venv\Scripts\activate`
-   - macOS/Linux: `source .venv/bin/activate`
-
-2. **Install backend dependencies**
+   For **desktop packaging** (PyInstaller), also:
 
    ```bash
-   pip install -r backend/requirements.txt
+   python -m pip install -r backend/requirements-build.txt
    ```
 
-3. **Install frontend dependencies**
+   Use **`python -m pip`** (not bare `pip`) so Ubuntu never runs `/usr/bin/pip3` by mistake. Verify: `command -v python` → `.../SDM_Modern/.venv/bin/python`.
+
+2. **Install frontend dependencies**
 
    ```bash
    npm install
    ```
 
-4. **Run the API** (terminal 1)
+3. **Run the API** (terminal 1, with `.venv` still activated so Flask sees installed packages)
 
    ```bash
    cd backend
@@ -46,7 +48,7 @@ From the **repository root** (`SDM_Modern/`):
 
    API listens on `http://127.0.0.1:8000` by default.
 
-5. **Run the Vite dev server** (terminal 2, from repo root)
+4. **Run the Vite dev server** (terminal 2, from repo root)
 
    ```bash
    npm run dev

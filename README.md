@@ -30,7 +30,8 @@ npm run dev
 
 See [docs/PACKAGING.md](docs/PACKAGING.md). Summary:
 
-1. `pip install -r backend/requirements.txt -r backend/requirements-build.txt`
+1. Create and use a **Python venv** (required on Ubuntu 24+ / PEP 668), then:  
+   `pip install -r backend/requirements.txt -r backend/requirements-build.txt`
 2. `npm run sidecar:prepare` — builds `sdm-api` with PyInstaller and copies it to `src-tauri/binaries/`
 3. `npm run tauri build` — produces `.msi` / `.dmg` / etc.; the installer starts the API on port 8000 automatically.
 
@@ -103,24 +104,6 @@ src/
 └── utils/
     └── constants.ts
 ```
-
-## 100% Feature Implementation
-
-All features from original Python UI:
-- ✅ Authentication with multiple environments
-- ✅ Device browsing and filtering
-- ✅ SDM status checking
-- ✅ Bulk SDM enable/disable
-- ✅ Diagnostics sharing
-- ✅ Device export to CSV
-- ✅ SSH command execution
-- ✅ Batch file transfer (legacy **sshcommand** jump shell only — pexpect + base64)
-- ✅ CSV parsing and validation
-
-## UI Organization
-
-- **Device Management** (drawer + main): hierarchy (orgs/locations), **session in-memory cache** for locations and device tables (repeat clicks reuse data; org reload clears cache), device table with search/filters, bulk SDM enable/disable, diagnostics share, CSV export.
-- **File Transfer** (`FileTransferBatch`): jump host, reliability tuning (**Pause AP** applies between devices for batch transfer and batch SSH commands, matching legacy Tk), paginated AP table for large inventories, CSV/Device Management inventory, Connect/Disconnect (jump shell), upload/download batch, Stop, explorer. Vendored `backend/sshCommander/sshcommand.py` from `SDM/SDM_Port`.
 
 ## Dependencies
 

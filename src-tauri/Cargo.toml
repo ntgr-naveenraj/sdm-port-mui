@@ -1,0 +1,26 @@
+[package]
+name = "sdm-manager"
+version = "1.0.0"
+description = "SDM Manager - Netgear Secure Diagnostic Mode Management"
+authors = ["Netgear Development Team"]
+license = ""
+repository = ""
+edition = "2021"
+rust-version = "1.60"
+build = "build.rs"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.5", features = ["shell-open", "dialog-open"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[[example]]
+name = "helloworld"
+path = "examples/helloworld.rs"
