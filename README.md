@@ -2,6 +2,15 @@
 
 A modern web-based replacement for the original Python/Tkinter SDM (Service Delivery Module) Manager.
 
+## Developer documentation
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — setup, local run, checks before a PR
+- **[docs/RELEASE.md](docs/RELEASE.md)** — versioning, builds, distributing installers
+- **[docs/PACKAGING.md](docs/PACKAGING.md)** — Tauri + PyInstaller sidecar
+- **[CHANGELOG.md](CHANGELOG.md)** — release notes
+- **Tool versions:** `.nvmrc` (Node), `.python-version` (Python)
+- **Optional env template:** [.env.example](.env.example)
+
 ## Quick Start
 
 ### Backend
@@ -125,4 +134,3 @@ All features from original Python UI:
 - @mui/material, @mui/icons-material
 - Custom device table (`DeviceDataTable`): resizable columns, pagination
 - axios, zustand, typescript
-"# sdm-port-mui" 
